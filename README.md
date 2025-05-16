@@ -36,3 +36,20 @@ In this specific case, after running the Publisher **twice**, the total number o
 
 This demonstrates how **imbalanced message rates** between Publisher and Subscriber can lead to **message buildup** in the broker.
 
+## Running Three Subsribers
+![](images/2.png)
+
+In the same experiment described in the **Simulation of a Slow Subscriber** section, I ran multiple Subscribers instead of just one.
+
+### Key Findings:
+
+- **Faster Data Transmission:**  
+  Running multiple Subscribers accelerated data processing. The message broker distributed incoming messages from the Publisher across all connected Subscribers, preventing the accumulation of new messages in the queue.
+
+- **Improved Queue Management:**  
+  When three Subscribers were active, after running publisher twice, the number of queued messages dropped significantly—from an initial 6 to 0. This clearly illustrates that increasing the number of Subscribers can dramatically improve throughput and reduce the backlog within the message broker.
+
+- **Dynamic Scalability:**  
+  Without changing any code, different outcomes can be achieved by simply altering the message broker's configuration or adjusting the number of active Subscribers. This approach exemplifies the principles of **event-driven architecture**.
+
+This experiment shows how scaling the number of consumers can be a powerful strategy to optimize message processing systems.
